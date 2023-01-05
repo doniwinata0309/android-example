@@ -34,7 +34,7 @@ dependencies {
 }
 
 def getArtifactFilePath(String domain) {
-    return "$rootDir/" + domain + "/lib.jar"
+    return "$rootDir/" + "library" + "/lib.jar"
 }
 
 afterEvaluate {
