@@ -1,40 +1,40 @@
 plugins {
-//    id 'com.android.library'
-//    id 'kotlin-android'
+    id 'com.android.library'
+    id 'kotlin-android'
     id 'maven-publish'
 }
 
-group = 'com.github.jitpack'
-version = '1.0'
-//
-//android {
-//    compileSdkVersion 33
-//
-//    defaultConfig {
-//        minSdkVersion 21
-//        targetSdkVersion 31
-//        versionCode 1
-//        versionName "1.0"
-//    }
-//
-//    buildTypes {
-//        release {
-//            minifyEnabled false
-//            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-//        }
-//    }
-////
-////    kotlinOptions {
-////        jvmTarget = '1.8'
-////    }
-//}
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 31
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
 
 dependencies {
-//    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation "androidx.annotation:annotation:1.1.0"
+    implementation "io.reactivex:rxandroid:1.2.1"
+    implementation "io.reactivex:rxjava:1.3.8"
 }
 
 def getArtifactFilePath(String domain) {
-    return "$rootDir/" + "library" + "/lib.jar"
+    return "$rootDir/" + "library" + "/lib.aar"
 }
 
 afterEvaluate {
@@ -42,7 +42,7 @@ afterEvaluate {
         publications {
             // Creates a Maven publication called "release".
             release(MavenPublication) {
-
+                from components.release
                 groupId GROUP
                 version VERSION_NAME
                 artifactId POM_ARTIFACT_ID
